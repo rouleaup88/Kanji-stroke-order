@@ -38,3 +38,10 @@ https://www.7-zip.org/sdk.html
 * In a Tampermonkey userscript use jcmellado's js-lzma javascript port of LZMA.
 
 https://github.com/jcmellado/js-lzma
+
+The @require directives should be
+
+```
+// @require      https://cdn.jsdelivr.net/gh/jcmellado/js-lzma@3060ba8a5b5e6f4e7276d937b5e214979bf9f52b/src/lzma.shim.js
+// @require      https://cdn.jsdelivr.net/gh/jcmellado/js-lzma@3060ba8a5b5e6f4e7276d937b5e214979bf9f52b/src/lzma.js
+```
