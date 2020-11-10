@@ -41,6 +41,7 @@ Decoding based64 is done with the following algorithm. (Javascript) This functio
 file if needed.
 
 <code>
+    
     function base64ToBytesArr(str) {
     
         const abc = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"]; // base64 alphabet
