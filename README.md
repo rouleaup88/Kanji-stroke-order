@@ -19,46 +19,15 @@ The original files are too large to be hosted on github. They are available in L
 * WK_svg_normal.json.compressed    - The SVG for the kanji taught by wanikani.com in their original height of 109px
 * WK_svg_smaller.json.compressed   - Same as the previous file but proportionally smaller with a reduced height of 63px.
 
-LZMA is a binary format. In the context of a Wanikani Tampermonkey userscript is not always possible to transfer binary files over the network. Versions of these three LZMA files 
-are available encoded into base64 format. These are ascii files that will pass where binary is prohibited.
-
-* All_svg.json.base64          - All SVG files provided by jisho.org.
-* WK_svg_normal.json.base64    - The SVG for the kanji taught by wanikani.com in their original height of 109px
-* WK_svg_smaller.json.base64   - Same as the previous file but proportionally smaller with a reduced height of 63px.
-
 The SVG in these file differ from the jisho original in that the px units are omitted from the viewBox attribute. This change is inconsequential because when units are 
 missing from the viewBox attributes SVG defaults to px. This change is required because my need for these files is to use them in a Wanikani userscript. There is 
 some Javascript on wanikani that reacts negatively to the presence of units in viewBox attributes and generates error messages on the Javascript console. Removing the 
 units works around this problem.
 
-Using these files is a multistep process.
+Using these files is a two step process.
 
-* If you use the base64 versions you need to decode them to produce the LZMA binary version.
 * Then you need to decompress them to obtain the JSON data.
 * Then you need to parse JSON to retrieve the kanji-indexed object.
-
-Decoding based64 is done with the following algorithm. (Javascript) This function produces an array of bytes ready for decompression. The array may be turned into a binary
-file if needed.
-
-Credit: https://stackoverflow.com/a/62364519
-
-<code>
-    
-    function base64ToBytesArr(str) {
-    
-        const abc = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"]; // base64 alphabet
-    
-        let result = [];
-
-        for(let i=0; i<str.length/4; i++) {
-            let chunk = [...str.slice(4*i,4*i+4)]
-            let bin = chunk.map(x=> abc.indexOf(x).toString(2).padStart(6,0)).join('');
-            let bytes = bin.match(/.{1,8}/g).map(x=> +('0b'+x));
-            result.push(...bytes.slice(0,3 - (str[4*i+2]=="=") - (str[4*i+3]=="=")));
-        }
-        return result;
-     };
-</code>
 
 For decompression you may use:
 
