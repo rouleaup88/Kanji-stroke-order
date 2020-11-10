@@ -39,7 +39,7 @@ https://www.7-zip.org/sdk.html
 
 https://github.com/jcmellado/js-lzma
 
-The @require directives should be
+If you plan to upload the script on Greasyfork the @require directives should be as below to pass their whitelist filter.
 
 ```
 // @require      https://cdn.jsdelivr.net/gh/jcmellado/js-lzma@3060ba8a5b5e6f4e7276d937b5e214979bf9f52b/src/lzma.shim.js
