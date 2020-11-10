@@ -42,6 +42,7 @@ file if needed.
 
 <code>
     function base64ToBytesArr(str) {
+    
         const abc = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"]; // base64 alphabet
     
         let result = [];
