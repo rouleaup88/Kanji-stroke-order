@@ -40,6 +40,8 @@ Using these files is a multistep process.
 Decoding based64 is done with the following algorithm. (Javascript) This function produces an array of bytes ready for decompression. The array may be turned into a binary
 file if needed.
 
+Credit: https://stackoverflow.com/a/62364519
+
 <code>
     
     function base64ToBytesArr(str) {
